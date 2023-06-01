@@ -1,8 +1,10 @@
-﻿namespace TikTakToe.TextConsoleTTT
+﻿using TikTakToe.TextConsoleTTT;
+
+namespace TikTakToe.TextConsoleTTT
 {
-    public static class DuoTextConsoleTTT
+    public static class DuoTTT
     {
-        public static bool PutVal(char val,string name,  char[] arr)
+        public static void PrintTable(char[] arr)
         {
             Console.WriteLine("    |   |     ");
             Console.WriteLine("  {0} | {1} | {2} ", arr[0], arr[1], arr[2]);
@@ -13,6 +15,11 @@
             Console.WriteLine("    |   |     ");
             Console.WriteLine("  {0} | {1} | {2} ", arr[6], arr[7], arr[8]);
             Console.WriteLine("    |   | ");
+        } 
+
+        public static bool PutVal(char val,string name,  char[] arr)
+        {
+            PrintTable(arr);
 
             Console.WriteLine("{0}, enter position to put {1} : ",name ,val);
             try
@@ -21,6 +28,7 @@
                 if (arr[pos] == '-')
                 {
                     arr[pos] = val;
+                    SoloTTT.ReduceArr(pos);
                     Console.Clear();
                 } 
                 else
