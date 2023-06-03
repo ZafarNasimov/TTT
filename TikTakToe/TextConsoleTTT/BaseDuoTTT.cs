@@ -1,56 +1,58 @@
-﻿using TikTakToe.TextConsoleTTT;
+﻿using static System.Console;
+using static System.Convert;
+using static TikTakToe.TextConsoleTTT.SoloEasyTTT;
 
 namespace TikTakToe.TextConsoleTTT
 {
-    public static class DuoTTT
+    public static class BaseDuoTTT
     {
         public static void PrintTable(char[] arr)
         {
-            Console.WriteLine("    |   |     ");
-            Console.WriteLine("  {0} | {1} | {2} ", arr[0], arr[1], arr[2]);
-            Console.WriteLine("____|___|_____ ");
-            Console.WriteLine("    |   |     ");
-            Console.WriteLine("  {0} | {1} | {2} ", arr[3], arr[4], arr[5]);
-            Console.WriteLine("____|___|_____ ");
-            Console.WriteLine("    |   |     ");
-            Console.WriteLine("  {0} | {1} | {2} ", arr[6], arr[7], arr[8]);
-            Console.WriteLine("    |   | ");
+            WriteLine("    |   |     ");
+            WriteLine("  {0} | {1} | {2} ", arr[0], arr[1], arr[2]);
+            WriteLine("____|___|_____ ");
+            WriteLine("    |   |     ");
+            WriteLine("  {0} | {1} | {2} ", arr[3], arr[4], arr[5]);
+            WriteLine("____|___|_____ ");
+            WriteLine("    |   |     ");
+            WriteLine("  {0} | {1} | {2} ", arr[6], arr[7], arr[8]);
+            WriteLine("    |   | ");
         } 
 
         public static bool PutVal(char val,string name,  char[] arr)
         {
             PrintTable(arr);
 
-            Console.WriteLine("{0}, enter position to put {1} : ",name ,val);
+            WriteLine("{0}, enter position to put {1} : ",name ,val);
             try
             {
-                int pos = Convert.ToInt32(Console.ReadLine());
+                int pos = ToInt32(ReadLine());
                 if (arr[pos] == '-')
                 {
                     arr[pos] = val;
-                    SoloTTT.ReduceArr(pos);
-                    Console.Clear();
+                    ReduceArr(pos);
+                    Clear();
                 } 
                 else
                 {
-                    Console.WriteLine("Position is already occupied. Choose another one !");
+                    WriteLine("Position is already occupied. Choose another one !");
                     return false;
                 }
                 
             }
             catch (IndexOutOfRangeException ex)
             {
-                Console.WriteLine(ex.Message);
+                WriteLine(ex.Message);
                 return false;
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine(ex.Message);
+                WriteLine(ex.Message);
                 return false;
             }
             catch (FormatException ex)
             {
-                Console.WriteLine(ex.Message);
+                WriteLine(ex.Message);
                 return false;
             }
             return true;

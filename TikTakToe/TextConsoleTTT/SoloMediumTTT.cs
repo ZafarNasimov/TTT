@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using static TikTakToe.TextConsoleTTT.SoloEasyTTT;
+
 
 namespace TikTakToe.TextConsoleTTT
 {
-    public static class SoloHardTTT
+    public static class SoloMediumTTT
     {
         private static bool PutWinChar(char[] arr, char ch, int start, int end, bool horizontal = true)
         {
@@ -25,7 +22,7 @@ namespace TikTakToe.TextConsoleTTT
                         arr[i] = ch;
             }
             //Vertical case
-            else
+            else if (!horizontal)
             {
                 for (int i = start; i <= end; i += 3) 
                     arr[i] = ch;
@@ -41,7 +38,7 @@ namespace TikTakToe.TextConsoleTTT
                 for (int i = start; i <= end; i++)
                     if (arr[i] == '-')
                     {
-                        SoloTTT.ReduceArr(i);
+                        ReduceArr(i);
                         arr[i] = ch;
                         return true;
                     }     
@@ -54,7 +51,7 @@ namespace TikTakToe.TextConsoleTTT
                     {
                         if (arr[i] == '-')
                         {
-                            SoloTTT.ReduceArr(i);
+                            ReduceArr(i);
                             arr[i] = ch;
                             return true;
                         }
@@ -64,20 +61,20 @@ namespace TikTakToe.TextConsoleTTT
                     {
                         if (arr[i] == '-')
                         {
-                            SoloTTT.ReduceArr(i);
+                            ReduceArr(i);
                             arr[i] = ch;
                             return true;
                         }
                     }  
             }
             //Vertical case
-            else
+            else if (!horizontal)
             {
                 for (int i = start; i <= end; i += 3)
                 {
                     if (arr[i] == '-')
                     {
-                        SoloTTT.ReduceArr(i);
+                        ReduceArr(i);
                         arr[i] = ch;
                         return true;
                     }
@@ -94,7 +91,7 @@ namespace TikTakToe.TextConsoleTTT
             for(int i = 1; i < 10; i++)
             {
                 if (arr[i - 1] == oppositeCh)
-                    count = 0;
+                    count--;
 
                 if (arr[i - 1] == ch)
                     count++;
@@ -113,7 +110,7 @@ namespace TikTakToe.TextConsoleTTT
             for (int i = 0; i < 9; i+=3)
             {
                 if (arr[i] == oppositeCh)
-                    count = 0;
+                    count --;
 
                 if (arr[i] == ch)
                     count++;
@@ -138,7 +135,7 @@ namespace TikTakToe.TextConsoleTTT
             for(int i = 0; i < 9; i+=4)
             {
                 if (arr[i] == oppositeCh)
-                    count = 0;
+                    count --;
 
                 if (arr[i] == ch)
                     count++;
@@ -154,7 +151,7 @@ namespace TikTakToe.TextConsoleTTT
             for (int i = 2; i < 7; i += 2)
             {
                 if (arr[i] == oppositeCh)
-                    count = 0;
+                    count --;
 
                 if (arr[i] == ch)
                     count++;
@@ -176,6 +173,9 @@ namespace TikTakToe.TextConsoleTTT
             {
                 if (arr[i - 1] == oppositeCh)
                     count++;
+                if (arr[i - 1] == ch)
+                    count--;
+
                 if (i % 3 == 0)
                 {
                     if (count == 2)
@@ -192,6 +192,9 @@ namespace TikTakToe.TextConsoleTTT
             {
                 if (arr[i] == oppositeCh)
                     count++;
+
+                if (arr[i] == ch)
+                    count--;
 
                 if (i + 3 > 8)
                 {
@@ -215,6 +218,9 @@ namespace TikTakToe.TextConsoleTTT
                 if (arr[i] == oppositeCh)
                     count++;
 
+                if (arr[i] == ch)
+                    count--;
+
                 if (i == 8 && count == 2)
                 {
                     return PutSurvChar(arr, ch, i - 8, i, false);
@@ -227,9 +233,12 @@ namespace TikTakToe.TextConsoleTTT
                 if (arr[i] == oppositeCh)
                     count++;
 
+                if (arr[i] == ch)
+                    count--;
+
                 if (i == 6 && count == 2)
                 {
-                    return PutSurvChar(arr, ch, i - 6, i - 4, false);
+                    return PutSurvChar(arr, ch, i - 4, i, false);
                 }
             }
             return false;
