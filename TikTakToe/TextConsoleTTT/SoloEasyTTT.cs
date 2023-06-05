@@ -1,4 +1,5 @@
-﻿namespace TikTakToe.TextConsoleTTT
+﻿using static TikTakToe.TextConsoleTTT.BaseDuoTTT;
+namespace TikTakToe.TextConsoleTTT
 {
     public static class SoloEasyTTT
     {
@@ -20,6 +21,7 @@
             int random_pos = ChooseSpot();
             arr[static_list.ElementAt(random_pos)] = val;
             ReduceArr(static_list.ElementAt(random_pos));
+            Console.WriteLine("Easy bot made move");  
         }
     }
 }

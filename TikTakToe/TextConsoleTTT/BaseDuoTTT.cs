@@ -31,7 +31,7 @@ namespace TikTakToe.TextConsoleTTT
                 {
                     arr[pos] = val;
                     ReduceArr(pos);
-                    Clear();
+                    //Clear();
                 } 
                 else
                 {
@@ -77,6 +77,11 @@ namespace TikTakToe.TextConsoleTTT
             else if (arr[2] == arr[4] && arr[4] == arr[6] && arr[6] != '-')
                 return 1;
             else return 0;
+        }
+
+        public static bool IsEmpty(int pos, char[] arr)
+        {
+            return arr[pos] == '-';
         }
     }
 }

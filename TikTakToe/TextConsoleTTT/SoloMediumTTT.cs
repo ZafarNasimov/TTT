@@ -1,6 +1,5 @@
 ﻿using static TikTakToe.TextConsoleTTT.SoloEasyTTT;
 
-
 namespace TikTakToe.TextConsoleTTT
 {
     public static class SoloMediumTTT
@@ -9,23 +8,40 @@ namespace TikTakToe.TextConsoleTTT
         {
             //Horizontal case
             if (horizontal)
+            {
                 for (int i = start; i <= end; i++)
+                {
+                    Console.WriteLine("Medium bot made move");
                     arr[i] = ch;
+                }
+            }
+                
+                    
             //Diagonal case
             else if (!horizontal && (end - start == 8 || end - start == 4)) 
             {
                 if(end - start == 8)
-                    for (int i = start; i <= end; i+=4)
+                {
+                    Console.WriteLine("Medium bot made move");
+                    for (int i = start; i <= end; i += 4)
                         arr[i] = ch;
+                }
                 else
+                {
+                    Console.WriteLine("Medium bot made move");
                     for (int i = start; i <= end; i += 2)
                         arr[i] = ch;
+                }
+                    
             }
             //Vertical case
             else if (!horizontal)
             {
-                for (int i = start; i <= end; i += 3) 
+                for (int i = start; i <= end; i += 3)
+                {
+                    Console.WriteLine("Medium bot made move");
                     arr[i] = ch;
+                }   
             }
             return true;
         }
@@ -38,6 +54,7 @@ namespace TikTakToe.TextConsoleTTT
                 for (int i = start; i <= end; i++)
                     if (arr[i] == '-')
                     {
+                        Console.WriteLine("Medium bot made move");
                         ReduceArr(i);
                         arr[i] = ch;
                         return true;
@@ -51,6 +68,7 @@ namespace TikTakToe.TextConsoleTTT
                     {
                         if (arr[i] == '-')
                         {
+                            Console.WriteLine("Medium bot made move");
                             ReduceArr(i);
                             arr[i] = ch;
                             return true;
@@ -61,6 +79,7 @@ namespace TikTakToe.TextConsoleTTT
                     {
                         if (arr[i] == '-')
                         {
+                            Console.WriteLine("Medium bot made move");
                             ReduceArr(i);
                             arr[i] = ch;
                             return true;
@@ -74,6 +93,7 @@ namespace TikTakToe.TextConsoleTTT
                 {
                     if (arr[i] == '-')
                     {
+                        Console.WriteLine("Medium bot made move");
                         ReduceArr(i);
                         arr[i] = ch;
                         return true;
@@ -91,7 +111,7 @@ namespace TikTakToe.TextConsoleTTT
             for(int i = 1; i < 10; i++)
             {
                 if (arr[i - 1] == oppositeCh)
-                    count--;
+                    count = int.MinValue;
 
                 if (arr[i - 1] == ch)
                     count++;
@@ -110,7 +130,7 @@ namespace TikTakToe.TextConsoleTTT
             for (int i = 0; i < 9; i+=3)
             {
                 if (arr[i] == oppositeCh)
-                    count --;
+                    count = int.MinValue;
 
                 if (arr[i] == ch)
                     count++;
@@ -135,7 +155,7 @@ namespace TikTakToe.TextConsoleTTT
             for(int i = 0; i < 9; i+=4)
             {
                 if (arr[i] == oppositeCh)
-                    count --;
+                    count = int.MinValue;
 
                 if (arr[i] == ch)
                     count++;
@@ -151,7 +171,7 @@ namespace TikTakToe.TextConsoleTTT
             for (int i = 2; i < 7; i += 2)
             {
                 if (arr[i] == oppositeCh)
-                    count --;
+                    count = int.MinValue;
 
                 if (arr[i] == ch)
                     count++;
