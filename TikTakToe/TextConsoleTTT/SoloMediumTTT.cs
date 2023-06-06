@@ -194,7 +194,7 @@ namespace TikTakToe.TextConsoleTTT
                 if (arr[i - 1] == oppositeCh)
                     count++;
                 if (arr[i - 1] == ch)
-                    count--;
+                    count = int.MaxValue;
 
                 if (i % 3 == 0)
                 {
@@ -214,7 +214,7 @@ namespace TikTakToe.TextConsoleTTT
                     count++;
 
                 if (arr[i] == ch)
-                    count--;
+                    count = int.MaxValue;
 
                 if (i + 3 > 8)
                 {
@@ -239,7 +239,7 @@ namespace TikTakToe.TextConsoleTTT
                     count++;
 
                 if (arr[i] == ch)
-                    count--;
+                    count = int.MaxValue;
 
                 if (i == 8 && count == 2)
                 {
@@ -254,7 +254,7 @@ namespace TikTakToe.TextConsoleTTT
                     count++;
 
                 if (arr[i] == ch)
-                    count--;
+                    count = int.MaxValue;
 
                 if (i == 6 && count == 2)
                 {

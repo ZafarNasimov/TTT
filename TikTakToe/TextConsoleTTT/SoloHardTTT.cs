@@ -67,7 +67,7 @@ namespace TikTakToe.TextConsoleTTT
             return count > 0;
         }
 
-        public static bool HardWinningSpot(char ch, char oppositeCh, char[] arr)
+        public static bool HardWinningSpot(char ch, char oppositeCh, char[] arr, bool survive = false)
         {
             for (int i = 0; i < arr.Length; i++)
             {
@@ -78,7 +78,10 @@ namespace TikTakToe.TextConsoleTTT
                     (ScanDiagonal(i, ch, oppositeCh, arr) && ScanHorizontal(i, ch, oppositeCh, arr)))
                     {
                         ReduceArr(i);
-                        arr[i] = ch;
+                        if(!survive) 
+                            arr[i] = ch;
+                        else
+                            arr[i] = oppositeCh;
                         Console.WriteLine("Hard bot made move !");
                         return true;
                     }
@@ -87,6 +90,19 @@ namespace TikTakToe.TextConsoleTTT
             return false;
         }
 
+        public static void HardBotBeginningLogic(char ch, char[] arr)
+        {
+            int pos;
+            do
+            {
+                Random random = new Random();
+                pos = 2 * random.Next(0, arr.Length / 2);
+            } while (arr[pos] != '-');
+            
+            arr[pos] = ch;
+            ReduceArr(pos);
+            Console.WriteLine("Hard bot made first move !");
+        }
 
     }
 }

@@ -12,6 +12,15 @@ namespace TikTakToe.Main
     {
         static int Main()
         {
+            //char[] arr = { 'x', '-', '0', '-', '-', 'x', '-', '-', '-' };
+            //char ch1 = 'x';
+            //char ch2 = '0';
+
+            //WriteLine(HardWinningSpot(ch1, ch2, arr, true));
+
+            //foreach(char ch in arr)
+            //    Write(ch + " ");
+
             char[] arr = { '-', '-', '-', '-', '-', '-', '-', '-', '-' };
             char ch1 = 'x';
             char ch2 = '0';
@@ -227,22 +236,30 @@ namespace TikTakToe.Main
                         goto case 3;
                     }
 
+                    int move_count = 0;
                     while (true)
                     {
                         if (is_bot_turn)
                         {
-                            if (!WinningSpot(arr, ch1, ch2))
+                            if (move_count == 1)
+                            {
+                                HardBotBeginningLogic(ch2, arr);
+                            }
+                            else if (!WinningSpot(arr, ch1, ch2))
                             {
                                 if (!SurvivingSpot(arr, ch1, ch2))
                                 {
                                     if (!HardWinningSpot(ch2, ch1, arr))
                                     {
-                                        EasyModeTTTLogic(ch2, arr);
-                                    } 
+                                        if(!HardWinningSpot(ch1, ch2, arr, true))
+                                        {
+                                            EasyModeTTTLogic(ch2, arr);
+                                        }  
+                                    }
                                 }
                             }
-                                
 
+                            move_count++;
                             is_bot_turn = false;
                             if (CheckWinOrDraw(arr) == 1)
                             {
@@ -253,6 +270,7 @@ namespace TikTakToe.Main
                         }
                         else if (PutVal(ch1, name1, arr))
                         {
+                            move_count++;
                             is_bot_turn = true;
                             if (CheckWinOrDraw(arr) == 1)
                             {
@@ -265,6 +283,7 @@ namespace TikTakToe.Main
 
                         if (!new string(arr).Contains('-'))
                         {
+                            PrintTable(arr);
                             WriteLine("Draw ! ");
                             break;
                         }
