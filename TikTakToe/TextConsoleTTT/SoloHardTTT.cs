@@ -4,7 +4,7 @@ namespace TikTakToe.TextConsoleTTT
 {
     public static class SoloHardTTT
     {
-        public static bool ScanHorizontal(int pos, char ch, char oppositeCh, char[] arr)
+        public static bool ScanHardHorizontal(int pos, char ch, char oppositeCh, char[] arr)
         {
             int count = 0;
             int start = pos / 3;
@@ -18,7 +18,7 @@ namespace TikTakToe.TextConsoleTTT
             return count > 0;
         }
 
-        public static bool ScanVertical(int pos, char ch, char oppositeCh, char[] arr)
+        public static bool ScanHardVertical(int pos, char ch, char oppositeCh, char[] arr)
         {
             int count = 0;
             int start = pos % 3;
@@ -32,7 +32,7 @@ namespace TikTakToe.TextConsoleTTT
             return count > 0;
         }
 
-        public static bool ScanDiagonal(int pos, char ch, char oppositeCh, char[] arr)
+        public static bool ScanHardDiagonal(int pos, char ch, char oppositeCh, char[] arr)
         {
             bool mod8 = pos % 8 == 0;
             bool mod2 = pos % 2 == 0;
@@ -73,9 +73,9 @@ namespace TikTakToe.TextConsoleTTT
             {
                 if (arr[i] == '-')
                 {
-                    if ((ScanHorizontal(i, ch, oppositeCh, arr) && ScanVertical(i, ch, oppositeCh, arr)) ||
-                    (ScanDiagonal(i, ch, oppositeCh, arr) && ScanVertical(i, ch, oppositeCh, arr)) ||
-                    (ScanDiagonal(i, ch, oppositeCh, arr) && ScanHorizontal(i, ch, oppositeCh, arr)))
+                    if ((ScanHardHorizontal(i, ch, oppositeCh, arr) && ScanHardVertical(i, ch, oppositeCh, arr)) ||
+                    (ScanHardDiagonal(i, ch, oppositeCh, arr) && ScanHardVertical(i, ch, oppositeCh, arr)) ||
+                    (ScanHardDiagonal(i, ch, oppositeCh, arr) && ScanHardHorizontal(i, ch, oppositeCh, arr)))
                     {
                         ReduceArr(i);
                         if(!survive) 

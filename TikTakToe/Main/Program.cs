@@ -12,15 +12,6 @@ namespace TikTakToe.Main
     {
         static int Main()
         {
-            //char[] arr = { 'x', '-', '0', '-', '-', 'x', '-', '-', '-' };
-            //char ch1 = 'x';
-            //char ch2 = '0';
-
-            //WriteLine(HardWinningSpot(ch1, ch2, arr, true));
-
-            //foreach(char ch in arr)
-            //    Write(ch + " ");
-
             char[] arr = { '-', '-', '-', '-', '-', '-', '-', '-', '-' };
             char ch1 = 'x';
             char ch2 = '0';
@@ -175,11 +166,14 @@ namespace TikTakToe.Main
                     {
                         if (is_bot_turn)
                         {
-                            if (!WinningSpot(arr, ch1, ch2))
-                                if (!SurvivingSpot(arr, ch1, ch2))
+                            if (!MediumWinningSpot(ch2, ch1, arr))
+                            {
+                                if (!MediumWinningSpot(ch1, ch2, arr, true))
                                 {
                                     EasyModeTTTLogic(ch2, arr);
                                 }
+                            }
+                                
 
                             is_bot_turn = false;
                             if (CheckWinOrDraw(arr) == 1)
@@ -245,9 +239,9 @@ namespace TikTakToe.Main
                             {
                                 HardBotBeginningLogic(ch2, arr);
                             }
-                            else if (!WinningSpot(arr, ch1, ch2))
+                            else if (!MediumWinningSpot(ch2, ch1, arr))
                             {
-                                if (!SurvivingSpot(arr, ch1, ch2))
+                                if (!MediumWinningSpot(ch1, ch2, arr, true))
                                 {
                                     if (!HardWinningSpot(ch2, ch1, arr))
                                     {

@@ -31,7 +31,7 @@ namespace TikTakToe.TextConsoleTTT
                 {
                     arr[pos] = val;
                     ReduceArr(pos);
-                    //Clear();
+                    Clear();
                 } 
                 else
                 {
